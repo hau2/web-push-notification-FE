@@ -1,12 +1,11 @@
 import React from 'react';
-import NotificationButton from './NotificationButton';
+import PushNotificationButton from './components/PushNotificationButton';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Web Notifications with React</h1>
-      <p>Click the button below to enable notifications:</p>
-      <NotificationButton />
+    <div>
+      <h1>React Web Push Notifications</h1>
+      <PushNotificationButton />
     </div>
   );
 }
