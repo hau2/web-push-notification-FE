@@ -1,27 +1,28 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
 self.addEventListener('push', (event) => {
-    const data = event.data.json();
-    const { title, content, url, image } = data;
-  
+  try {
+    const data = event.data.json(); // Parse the payload
+    const { title, body, url, image } = data;
+
     const options = {
-      body: content,
+      body: body || 'No content provided.', // Default value if content is missing
       icon: image || '/favicon.png',
-      data: { url },
-      // actions: [
-      //   { action: 'open', title: 'View' },
-      // ],
+      data: { url }, // URL to open when the notification is clicked
     };
-  
+
     event.waitUntil(self.registration.showNotification(title, options));
-  });
-  
-  self.addEventListener('notificationclick', (event) => {
-    event.notification.close();
-    const { url } = event.notification.data;
-  
-    if (url) {
-      event.waitUntil(clients.openWindow(url));
-    }
-  });
-  
+  } catch (error) {
+    console.error('Error parsing push event data:', error);
+  }
+});
+
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const { url } = event.notification.data;
+
+  if (url) {
+    event.waitUntil(clients.openWindow(url));
+  }
+});

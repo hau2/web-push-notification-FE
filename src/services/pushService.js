@@ -8,7 +8,7 @@ export const subscribeUserToPush = async (registration) => {
       console.log('Push Subscription:', subscription);
   
       // Gửi thông tin subscription lên backend để lưu
-      await fetch('http://103.140.249.216:5000/api/notification/subscribe', {
+      await fetch('https://www.testapi.leconghau.id.vn/api/notification/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(subscription),
@@ -20,7 +20,7 @@ export const subscribeUserToPush = async (registration) => {
   
   export const sendTestNotification = async (payload) => {
     try {
-      await fetch('http://103.140.249.216:5000/api/notification/send', {
+      await fetch('https://www.testapi.leconghau.id.vn/api/notification/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
