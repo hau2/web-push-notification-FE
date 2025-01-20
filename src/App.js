@@ -4,7 +4,7 @@ import PushNotificationButton from './components/PushNotificationButton';
 function App() {
   return (
     <div>
-      <h1>React Web Push Notifications</h1>
+      <h1>Test web push notification from ESMS Dev team</h1>
       <PushNotificationButton />
     </div>
   );
